@@ -3,13 +3,40 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReparaYa - Prototipo</title>
+    <title>ReparaYa - Prototipo de Interfaces</title>
     <style>
-        body, html { margin: 0; padding: 0; width: 100%; height: 100%; overflow: hidden; background-color: #000; }
-        iframe { border: none; width: 100%; height: 100%; position: absolute; top: 0; left: 0; }
+        body { font-family: 'Arial', sans-serif; background-color: #0f0f11; color: #ffffff; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 20px; }
+        h1 { font-size: 22px; margin-bottom: 5px; color: #ff6b6b; }
+        p { font-size: 14px; margin-bottom: 25px; color: #aaa; }
+        .phone-container { width: 340px; height: 700px; background-color: #000; border: 12px solid #333; border-radius: 40px; box-shadow: 0px 10px 30px rgba(0,0,0,0.7); overflow: hidden; position: relative; }
+        .screen { width: 100%; height: 100%; display: none; background-size: cover; background-position: center; cursor: pointer; }
+        .screen.active { display: block; }
+        .nav-info { margin-top: 15px; font-size: 13px; color: #888; background: #222; padding: 8px 15px; border-radius: 20px; }
     </style>
 </head>
 <body>
-    <iframe src="https://www.figma.com/embed?embed_host=share&url=https://www.figma.com/make/IMpiOVaIh7sPfJXa1lAJc1/ReparaYa-mobile-app?fullscreen=1" allowfullscreen></iframe>
+
+    <h1>ReparaYa - Prototipo de Interfaces</h1>
+    <p>Simulador de Wireframes (Haz clic sobre la pantalla para avanzar)</p>
+
+    <div class="phone-container" onclick="nextScreen()">
+        <!-- Asegúrate de que los nombres coincidan exactamente con tus imágenes subidas -->
+        <div class="screen active" style="background-image: url('pantalla1.png');"></div>
+        <div class="screen" style="background-image: url('pantalla2.png');"></div>
+        <div class="screen" style="background-image: url('pantalla3.png');"></div>
+        <div class="screen" style="background-image: url('pantalla4.png');"></div>
+    </div>
+
+    <div class="nav-info">📱 Haz clic dentro del celular para ver la siguiente interfaz</div>
+
+    <script>
+        let current = 0;
+        const screens = document.querySelectorAll('.screen');
+        function nextScreen() {
+            screens[current].classList.remove('active');
+            current = (current + 1) % screens.length;
+            screens[current].classList.add('active');
+        }
+    </script>
 </body>
 </html>
